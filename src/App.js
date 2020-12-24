@@ -1,9 +1,12 @@
+import PropTypes from "prop-types";
+
 const foodILike = [
   {
     id: 1,
     name: "Kimchi",
     image:
-      "http://aeriskitchen.com/wp-content/uploads/2008/09/kimchi_bokkeumbap_02-.jpg"
+      "http://aeriskitchen.com/wp-content/uploads/2008/09/kimchi_bokkeumbap_02-.jpg",
+      //rating: 5
   },
   {
     id: 2,
@@ -35,13 +38,20 @@ const foodILike = [
   }
 ];
 
-function Food({ name, picture }) {
+function Food({ name, picture, rating }) {
   return (
   <div>
     <h2>I like {name}</h2>
     <img src={picture} alt={name}/>
+    <h4>{rating}/5.0</h4>
   </div>
   )
+}
+
+Food.propTypes = {
+  name: PropTypes.string.isRequired,
+  picture: PropTypes.string.isRequired,
+  rating: PropTypes.number//.isRequired
 }
 
 function App() {
@@ -49,7 +59,12 @@ function App() {
     <div className="App">
       <h1>Hello!!!</h1>
       {foodILike.map(dish => (
-        <Food key={dish.id} name={dish.name} picture={dish.image} />
+        <Food 
+          key={dish.id} 
+          name={dish.name} 
+          picture={dish.image} 
+          rating={dish.rating} 
+        />
       ))}
       </div>
   );
