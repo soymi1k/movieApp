@@ -6,10 +6,10 @@ class App extends React.Component {
     count: 0
   };
   add = () => { //인자값을 갖지않는 add라는 이름의 function 생성
-    console.log("add");
+    this.setState(current => ({ count : current.count + 1 }));
   };
   minus = () => {
-    console.log("minus");
+    this.setState(current => ({ count : current.count - 1 }));
   };
   render() {
     return (
